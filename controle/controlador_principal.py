@@ -3,6 +3,8 @@ import sys
 from visualizacao.tela_principal import TelaPrincipal
 from controle.controlador_partida import ControladorPartida
 from controle.controlador_mapa import ControladorMapa
+from controle.controlador_jogada import ControladorJogada
+from controle.controlador_jogador import ControladorJogador
 
 
 class ControladorPrincipal:
@@ -11,8 +13,8 @@ class ControladorPrincipal:
         self.__tela_principal = TelaPrincipal()
         self.__controlador_mapa = ControladorMapa(self)
         self.__controlador_partida = ControladorPartida(self)
-        '''self.__controlador_jogada = ControladorJogada(self)
-        self.__controlador_jogador = ControladorJogador(self)'''
+        self.__controlador_jogada = ControladorJogada(self)
+        self.__controlador_jogador = ControladorJogador(self)
 
     def inicia(self):
         opcoes = {1: self.inicia_mapa,
