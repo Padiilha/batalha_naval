@@ -4,6 +4,7 @@ from modelo.jogada import Jogada
 
 
 class Partida:
+
     def __init__(self):
         self.__id = id
         self.__jogadores = list()
@@ -36,7 +37,7 @@ class Partida:
     def acertos(self) -> list:
         return self.__acertos
 
-    def acertos(self, acerto: Acerto):
+    def acertos(self, acerto: Jogada):
         self.__acertos.append(acerto)
 
     def total_jogadas(self) -> int:
