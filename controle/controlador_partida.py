@@ -1,7 +1,9 @@
 from modelo.partida import Partida
 from visualizacao.tela_partida import TelaPartida
 
+
 class ControladorPartida:
+
     def __init__(self):
         self.__partidas = list()
         self.__tela_partida = TelaPartida()
