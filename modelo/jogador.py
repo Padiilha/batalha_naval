@@ -1,4 +1,3 @@
-from modelo.jogada import Jogada
 
 
 class Jogador:
@@ -49,6 +48,3 @@ class Jogador:
     @qtd_vitorias.setter
     def qtd_vitorias(self):
         self.__qtd_vitorias += 1
-
-    def jogada(self, jogada: Jogada):
-        pass
