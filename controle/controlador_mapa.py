@@ -28,16 +28,23 @@ class ControladorMapa:
             self.__tela_mapa.mostra_mapas(dados_mapa)
 
     def altera_mapas(self):
-        pass
+        dados_mapa_antigo = self.__tela_mapa.pega_dados_altera_mapa()
+        novo_mapa = Mapa(dados_mapa_antigo["tamanho_x"],
+                         dados_mapa_antigo["tamanho_y"])
+        for mapa in self.__mapas:
+            if mapa.id == dados_mapa_antigo["id"]:
+                mapa.tamanho_x = novo_mapa.tamanho_x
+                mapa.tamanho_y = novo_mapa.tamanho_y
 
     def remove_mapa(self):
         dados_mapa = self.__tela_mapa.pega_dados_e_deleta_mapa()
+        for mapa in self.__mapas:
+            if mapa.id == dados_mapa.id:
+                self.__mapas.remove(mapa)
 
 
     def inclui_navio(self, tipo, tamanho):
         pass
-
-    def
 
     def mostra_tela_opcoes(self):
         opcoes = {
