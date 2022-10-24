@@ -25,14 +25,16 @@ class TelaMapa:
         print("MAPA")
         print(f"Tamanho X:" {dados_mapa['tamanho_x']})
         print(f"Tamanho Y:" {dados_mapa['tamanho_y']})
+        print("")
 
     def pega_dados_altera_mapa(self):
         print("*" * 20)
         print("Alteração de Mapa")
         print("*" * 20)
+        id_mapa = int(input("Insira o ID do mapa que deseja atualizar: "))
         tamanho_x = int(input("Qual o tamanho X do seu novo mapa: "))
         tamanho_y = int(input("Qual o tamanho Y do seu novo mapa: "))
-        return {"tamanho_x": tamanho_x, "tamanho_y": tamanho_y}
+        return {"id" : id_mapa, tamanho_x": tamanho_x, "tamanho_y": tamanho_y}
 
     def pega_dados_deleta_mapa(self):
         print("*" * 20)

@@ -1,4 +1,21 @@
 
+from enum import Enum
+
+class TipoNavio(Enum):
+    SUBMARINO = 1
+    FRAGATA = 2
+    PORTA_AVIOES = 5
+
+
+class Navio():
+    def __init__(self, id, tipo: TipoNavio):
+        self.id = id
+        self.tipo = tipo
+
+navio = Navio(10, TipoNavio.SUBMARINO)
+
+navio.tipo.value
+navio.tipo.name + ".jpg"
 
 class Mapa:
     def __init__(self, tamanho_x, tamanho_y):
