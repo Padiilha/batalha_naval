@@ -8,7 +8,6 @@ from controle.controlador_jogador import ControladorJogador
 
 
 class ControladorPrincipal:
-
     def __init__(self):
         self.__tela_principal = TelaPrincipal()
         self.__controlador_mapa = ControladorMapa(self)
