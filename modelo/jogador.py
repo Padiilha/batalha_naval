@@ -2,12 +2,17 @@
 
 class Jogador:
 
-    def __init__(self, nome: str):
+    def __init__(self, id: int, nome: str):
+        self.__id = id
         self.__nome = nome
         self.__total_pontos = 0
         self.__posicao_ranking = 0
         self.__qtd_jogos = 0
         self.__qtd_vitorias = 0
+
+    @property
+    def id(self) -> int:
+        return self.__id
 
     @property
     def nome(self) -> str:
@@ -37,14 +42,12 @@ class Jogador:
     def qtd_jogos(self) -> int:
         return self.__qtd_jogos
 
-    @qtd_jogos.setter
-    def qtd_jogos(self):
+    def adiciona_jogo(self):
         self.__qtd_jogos += 1
 
     @property
     def qtd_vitorias(self) -> int:
         return self.__qtd_vitorias
 
-    @qtd_vitorias.setter
-    def qtd_vitorias(self):
+    def adiciona_vitoria(self):
         self.__qtd_vitorias += 1

@@ -30,7 +30,7 @@ class ControladorPrincipal:
         pass
 
     def inicia_partida(self):
-        pass
+        self.__controlador_partida.mostra_tela_opcoes()
 
     def inicia_jogada(self):
         pass

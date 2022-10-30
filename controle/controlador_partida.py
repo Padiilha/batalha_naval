@@ -1,6 +1,4 @@
-from controle.controlador_principal import ControladorPrincipal
-from exception.campos_invalidos_exception import CamposInvalidosException
-from exception.jogador_invalido_exception import JogadorInvalidoException
+from modelo.jogada import Jogada
 from modelo.jogador import Jogador
 from modelo.mapa import Mapa
 from modelo.partida import Partida
@@ -15,30 +13,38 @@ class ControladorPartida:
         self.__tela_partida = TelaPartida()
         self.__id = 1
 
-    def inicia_partida(self,
-                       jogador1: Jogador,
-                       jogador2: Jogador,
-                       mapa: Mapa):
-        if isinstance(jogador1, Jogador) and \
-                isinstance(jogador2, Jogador) and \
-                isinstance(mapa, Mapa):
-            partida = Partida(self.__id)
-            self.__id += 1
-            partida.adiciona_jogadores(jogador1, jogador2)
-            partida.mapa = mapa
-            while True:
-                jogada = ControladorPrincipal.inicia_jogada(mapa)
-                partida.adiciona_jogada(jogada.posicao)
-                partida.conta_jogada()
-                if jogada.acerto:
-                    partida.adiciona_acerto(jogada.acerto)
-                if jogada.vencedor is not None:
-                    partida.vencedor(jogada.vencedor)
-                    break
-        else:
-            raise JogadorInvalidoException
+    def inicia_partida(self):
+        dados_partida = self.__tela_partida.inicia_partida()
+        # pegar Jogador com ID == dados_partida[0]
+        # pegar Jogador com ID == dados_partida[1]
+        # pegar Mapa com ID == dados_partida[2]
+        partida = Partida(self.__id,
+                          jogador1,
+                          jogador2,
+                          mapa)
+        self.__id += 1
+        self.__partidas.append(partida)
+        num_jogada = 1
+        while True:
+            if num_jogada % 2 == 1:
+                jogador_vez = jogador1
+            else:
+                jogador_vez = jogador2
+            posicao = self.__tela_partida.faz_jogada(num_jogada)
+            jogada = Jogada(num_jogada,
+                            posicao[0],
+                            posicao[1],
+                            jogador_vez)
+            num_jogada += 1
+            partida.conta_jogada()
+            partida.adiciona_jogada(jogada)
+            if jogada.verifica_acerto():
+                partida.adiciona_acerto(jogada)
+            if jogada.fim_jogo():
+                partida.vencedor = jogador_vez
+                break
 
-    def lista_partida(self) -> list:
+    def lista_partida(self):
         for partida in self.__partidas:
             dados_partida = [partida.id,
                              partida.jogadores,
@@ -47,22 +53,11 @@ class ControladorPartida:
                              partida.acertos,
                              partida.total_jogadas,
                              partida.vencedor]
-            return dados_partida
-
-    def altera_partida(self):
-        pass
-
-    def remove_partida(self, id: int):
-        if isinstance(id, int):
-            self.__partidas.remove(id)
-        else:
-            CamposInvalidosException
+            self.__tela_partida.lista_partida(dados_partida)
 
     def mostra_tela_opcoes(self):
         opcoes = {1: self.inicia_partida,
-                  2: self.lista_partida,
-                  3: self.altera_partida,
-                  4: self.remove_partida}
+                  2: self.lista_partida}
         while True:
             opcao = self.__tela_partida.mostra_opcoes()
             if opcao == 0:
