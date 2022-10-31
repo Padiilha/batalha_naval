@@ -11,6 +11,3 @@ class Navio:
         self.id = id
         self.tipo = tipo
 
-#navio = Navio(10, TipoNavio.SUBMARINO)
-#navio.tipo.value
-#navio.tipo.name

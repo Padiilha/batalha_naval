@@ -1,6 +1,6 @@
 import random
 
-from exception.mapa_invalido_exception import MapaInvalidoException
+
 from modelo.mapa import Mapa
 from modelo.navio import TipoNavio, Navio
 from visualizacao.tela_mapa import TelaMapa
@@ -14,7 +14,7 @@ class ControladorMapa:
         self.__id = 1
 
     def cria_e_inclui_mapa(self, tamanho_mapa):
-        #dados = self.__tela_mapa.pega_dados_mapas()
+
         self.__id += 1
         if tamanho_mapa == "P":
             mapa = Mapa(self.__id, self.cria_mapa(6, 6), self.cria_mapa(6, 6), 6, 6, 4)
@@ -72,9 +72,8 @@ class ControladorMapa:
         return mapa
 
     def mostra_matriz(self, mapa):
-        letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M' 'N',
-                       'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'v', 'W', 'X', 'Y', 'Z']
-        print(' ', *letras[:len(mapa)])
+        posicoes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        print(' ', *posicoes[:len(mapa)])
         for index, line in enumerate(mapa):
             print(index, *line)
 
