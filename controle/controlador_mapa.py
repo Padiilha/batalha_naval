@@ -1,6 +1,5 @@
 import random
 
-
 from modelo.mapa import Mapa
 from modelo.navio import TipoNavio, Navio
 from visualizacao.tela_mapa import TelaMapa
@@ -14,7 +13,6 @@ class ControladorMapa:
         self.__id = 1
 
     def cria_e_inclui_mapa(self, tamanho_mapa):
-
         self.__id += 1
         if tamanho_mapa == "P":
             mapa = Mapa(self.__id, self.cria_mapa(6, 6), self.cria_mapa(6, 6), 6, 6, 4)
