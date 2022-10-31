@@ -24,18 +24,18 @@ class TelaPartida:
 
     def lista_partida(self, dados_partida: list):
         print("*" * 50)
-        print(" " * 16 + "PARTIDA " + dados_partida[0])
+        print(" " * 20 + "PARTIDA " + str(dados_partida[0]))
         print("*" * 50)
-        print("Jogadores: " + dados_partida[1])
-        print("Mapa: " + dados_partida[2])
-        print("Jogadas: " + dados_partida[3])
-        print("Quantidade de Acertos: " + dados_partida[4])
-        print("Quantidade de Jogadas: " + dados_partida[5])
-        print("Vencedor: " + dados_partida[6])
+        print("Jogadores: " + str(dados_partida[1]))
+        print("Mapa: " + str(dados_partida[2]))
+        print("Jogadas: " + str(dados_partida[3]))
+        print("Quantidade de Acertos: " + str(dados_partida[4]))
+        print("Quantidade de Jogadas: " + str(dados_partida[5]))
+        print("Vencedor: " + str(dados_partida[6]))
 
-    def faz_jogada(self, num_jogada) -> tuple:
+    def faz_jogada(self, num_jogada, jogador) -> tuple:
         print("*" * 50)
-        print(" " * 21 + "JOGADA " + str(num_jogada))
+        print(" " * 15 + "JOGADA " + str(num_jogada) + " - " + jogador)
         print("*" * 50)
         linha = int(input("Digite a linha que deseja acertar: "))
         coluna = int(input("Digite a coluna que deseja acertar: "))

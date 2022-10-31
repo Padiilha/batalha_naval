@@ -1,6 +1,4 @@
 from modelo.jogada import Jogada
-from modelo.jogador import Jogador
-from modelo.mapa import Mapa
 from modelo.partida import Partida
 from visualizacao.tela_partida import TelaPartida
 
@@ -33,13 +31,12 @@ class ControladorPartida:
             else:
                 jogador_vez = jogador2
             self.__controlador_principal.mostra_mapa(partida.mapa.tabuleiro_para_jogadores)
-            posicao = self.__tela_partida.faz_jogada(num_jogada)
+            posicao = self.__tela_partida.faz_jogada(num_jogada, jogador_vez.nome)
             jogada = Jogada(num_jogada,
                             posicao[0],
                             posicao[1],
                             jogador_vez,
                             partida.mapa)
-
             num_jogada += 1
             partida.conta_jogada()
             partida.adiciona_jogada(jogada)
@@ -55,11 +52,11 @@ class ControladorPartida:
         for partida in self.__partidas:
             dados_partida = [partida.id,
                              partida.jogadores,
-                             partida.mapa,
-                             partida.jogadas,
-                             partida.acertos,
+                             partida.mapa.id,
+                             len(partida.jogadas),
+                             len(partida.acertos),
                              partida.total_jogadas,
-                             partida.vencedor]
+                             partida.vencedor.nome]
             self.__tela_partida.lista_partida(dados_partida)
 
     def mostra_tela_opcoes(self):
