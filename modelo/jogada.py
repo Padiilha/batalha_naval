@@ -1,4 +1,5 @@
 from modelo.jogador import Jogador
+from modelo.mapa import Mapa
 
 
 class Jogada:
@@ -7,10 +8,12 @@ class Jogada:
                  num_jogada: int,
                  linha: int,
                  coluna: int,
-                 jogador: Jogador):
+                 jogador: Jogador,
+                 mapa: Mapa):
         self.__num_jogada = num_jogada
         self.__posicao = (linha, coluna)
         self.__jogador = jogador
+        self.__mapa = mapa
 
     @property
     def num_jogada(self) -> int:
@@ -25,10 +28,26 @@ class Jogada:
         return self.__jogador
 
     def verifica_acerto(self) -> bool:
-        # verifica se self.__posicao no Mapa é 0 ou 1
-        # se 1, muda pra 0 e retorna True
-        pass
+        if self.__mapa.tabuleiro[self.__posicao[0]][self.__posicao[1]] == '~':
+            self.__mapa.tabuleiro[self.__posicao[0]][self.__posicao[1]] = 'X'
+            self.__mapa.tabuleiro_para_jogadores[self.__posicao[0]][self.__posicao[1]] = 'X'
+            return False
+        elif self.__mapa.tabuleiro[self.__posicao[0]][self.__posicao[1]] != '~'\
+                and self.__mapa.tabuleiro[self.__posicao[0]][self.__posicao[1]] != 'X':
+            self.__mapa.tabuleiro[self.__posicao[0]][self.__posicao[1]] = '*'
+            return True
 
+
+#Acertar Lógica
     def fim_jogo(self) -> bool:
-        # percorre o Mapa, se ocorrer 1 = False
-        pass
+        linha = 0
+        qtLinhas = len(self.__mapa.tabuleiro)
+        while linha < qtLinhas:
+            col = 0
+            qtCol = len(self.__mapa.tabuleiro[linha])
+            while col < qtCol:
+                if self.__mapa.tabuleiro[linha][col] != '~' and self.__mapa.tabuleiro[linha][col] != 'X':
+                    return True
+                col += 1
+            linha += 1
+        return False

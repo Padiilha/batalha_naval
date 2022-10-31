@@ -18,7 +18,7 @@ class TelaPartida:
         print("*" * 50)
         id_jogador1 = int(input("ID do jogador 1: "))
         id_jogador2 = int(input("ID do jogador 2: "))
-        tam_mapa = input("Tamanho do mapa desejado (P, M ou G): ")
+        tam_mapa = str(input("Tamanho do mapa desejado (P, M ou G): ")).upper()
         dados_partida = [id_jogador1, id_jogador2, tam_mapa]
         return dados_partida
 
@@ -35,7 +35,7 @@ class TelaPartida:
 
     def faz_jogada(self, num_jogada) -> tuple:
         print("*" * 50)
-        print(" " * 21 + "JOGADA " + num_jogada)
+        print(" " * 21 + "JOGADA " + str(num_jogada))
         print("*" * 50)
         linha = int(input("Digite a linha que deseja acertar: "))
         coluna = int(input("Digite a coluna que deseja acertar: "))
