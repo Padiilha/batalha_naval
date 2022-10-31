@@ -9,8 +9,7 @@ class TelaMapa:
         print("2 - Listar Mapa")
         print("3 - Alterar Mapa")
         print("4 - Excluir Mapa")
-        print("5 - Incluir Navio")
-        print("6 - Listar Navios")
+        print("5 - Listar Navios")
         print("0 - Voltar")
         opcao = int(input("Selecione o que deseja realizar: "))
         return opcao
@@ -19,9 +18,8 @@ class TelaMapa:
         print("*" * 20)
         print("Cadastro de Mapa")
         print("*" * 20)
-        tamanho_x = int(input("Determine a quantidade de linhas do seu mapa: "))
-        tamanho_y = int(input("Determine a quantidade de colunas do seu mapa: "))
-        return {"tamanho_x": tamanho_x, "tamanho_y": tamanho_y}
+        tamanho_mapa = str(input("Escolha o tamanho do Mapa que deseja jogar, Pequeno(P), Médio(M) ou Grande(G): "))
+        return {"tamanho_mapa": tamanho_mapa}
 
     def mostra_mapas(self, dados_mapa):
         print("MAPA")
@@ -57,9 +55,3 @@ class TelaMapa:
         print(f"Tamanho do Navio: {dados_navio['tamanho_navio']}")
         print(f"Tipo do Navio:{dados_navio['tipo']}")
 
-    def pega_dados_deleta_navio(self):
-        print("*" * 20)
-        print("Remoção de Navio")
-        print("*" * 20)
-        id_navio = int(input("Insira o ID do Navio que deseja remover: "))
-        return {"id": id_navio}

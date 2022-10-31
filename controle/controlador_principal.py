@@ -33,12 +33,15 @@ class ControladorPrincipal:
         self.__controlador_jogador.mostra_tela_opcoes()
 
     def pega_mapa_por_tamanho(self, tamanho: str):
-        mapa = self.__controlador_mapa.pega_mapa_por_tamanho(tamanho)
+        mapa = self.__controlador_mapa.cria_e_inclui_mapa(tamanho)
         return mapa
 
     def pega_jogador_por_id(self, id: int):
         jogador = self.__controlador_jogador.pega_jogador_por_id(id)
         return jogador
+
+    def mostra_mapa(self, matriz):
+        self.__controlador_mapa.mostra_matriz(matriz)
 
     def encerra(self):
         sys.exit()

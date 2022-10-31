@@ -32,11 +32,14 @@ class ControladorPartida:
                 jogador_vez = jogador1
             else:
                 jogador_vez = jogador2
+            self.__controlador_principal.mostra_mapa(partida.mapa.tabuleiro_para_jogadores)
             posicao = self.__tela_partida.faz_jogada(num_jogada)
             jogada = Jogada(num_jogada,
                             posicao[0],
                             posicao[1],
-                            jogador_vez)
+                            jogador_vez,
+                            partida.mapa)
+
             num_jogada += 1
             partida.conta_jogada()
             partida.adiciona_jogada(jogada)
