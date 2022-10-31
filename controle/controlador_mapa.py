@@ -1,5 +1,6 @@
 import random
 
+from exception.mapa_invalido_exception import MapaInvalidoException
 from modelo.mapa import Mapa
 from modelo.navio import TipoNavio, Navio
 from visualizacao.tela_mapa import TelaMapa
@@ -53,7 +54,7 @@ class ControladorMapa:
                 self.__mapas.remove(mapa)
 
     def inclui_navio(self, mapa, tipo):
-
+        pass
 
     def lista_navios(self):
         id_mapa_escolhido = self.__tela_mapa.escolhe_mapa_contem_navios()
@@ -77,3 +78,9 @@ class ControladorMapa:
             if opcao == 0:
                 break
             opcoes[opcao]()
+
+    def pega_mapa_por_tamanho(self, tamanho: str) -> Mapa:
+        for mapa in self.__mapas:
+            if mapa.tamanho == tamanho:
+                return mapa
+        raise MapaInvalidoException

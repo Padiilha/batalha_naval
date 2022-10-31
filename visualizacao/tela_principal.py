@@ -9,8 +9,7 @@ class TelaPrincipal:
         print("")
         print("1 - Mapas")
         print("2 - Partidas")
-        print("3 - Jogadas")
-        print("4 - Jogadores")
+        print("3 - Jogadores")
         print("0 - Sair")
 
         opcao = int(input("Escolha a opção: "))

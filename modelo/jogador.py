@@ -26,9 +26,8 @@ class Jogador:
     def total_pontos(self) -> int:
         return self.__total_pontos
 
-    @total_pontos.setter
-    def total_pontos(self, pontos: int):
-        self.__total_pontos += pontos
+    def adiciona_ponto(self):
+        self.__total_pontos += 1
 
     @property
     def posicao_ranking(self) -> int:

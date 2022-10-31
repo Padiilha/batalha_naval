@@ -15,15 +15,17 @@ class ControladorPartida:
 
     def inicia_partida(self):
         dados_partida = self.__tela_partida.inicia_partida()
-        # pegar Jogador com ID == dados_partida[0]
-        # pegar Jogador com ID == dados_partida[1]
-        # pegar Mapa com ID == dados_partida[2]
+        jogador1 = self.__controlador_principal.pega_jogador_por_id(dados_partida[0])
+        jogador2 = self.__controlador_principal.pega_jogador_por_id(dados_partida[1])
+        mapa = self.__controlador_principal.pega_mapa_por_tamanho(dados_partida[2])
         partida = Partida(self.__id,
                           jogador1,
                           jogador2,
                           mapa)
         self.__id += 1
         self.__partidas.append(partida)
+        jogador1.adiciona_jogo()
+        jogador2.adiciona_jogo()
         num_jogada = 1
         while True:
             if num_jogada % 2 == 1:
@@ -40,8 +42,10 @@ class ControladorPartida:
             partida.adiciona_jogada(jogada)
             if jogada.verifica_acerto():
                 partida.adiciona_acerto(jogada)
+                jogador_vez.adiciona_ponto()
             if jogada.fim_jogo():
                 partida.vencedor = jogador_vez
+                jogador_vez.adiciona_vitoria()
                 break
 
     def lista_partida(self):

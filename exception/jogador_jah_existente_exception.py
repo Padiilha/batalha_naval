@@ -1,4 +1,5 @@
 
 
 class JogadorJahExistenteException(Exception):
-    super().__init__('Jogador já existente!')
+    def __init__(self):
+        super().__init__('Jogador já existente!')

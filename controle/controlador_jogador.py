@@ -1,4 +1,5 @@
 from exception.campos_invalidos_exception import CamposInvalidosException
+from exception.jogador_invalido_exception import JogadorInvalidoException
 from modelo.jogador import Jogador
 from visualizacao.tela_jogador import TelaJogador
 
@@ -17,7 +18,7 @@ class ControladorJogador:
             jogador = Jogador(self.__id, nome)
             self.__id += 1
             self.__jogadores.append(jogador)
-            self.__tela_jogador.feedback(jogador.nome + 'adicionado! ID ' + jogador.id)
+            self.__tela_jogador.feedback(jogador.nome + ' adicionado! ID ' + str(jogador.id))
         else:
             raise CamposInvalidosException
 
@@ -37,19 +38,19 @@ class ControladorJogador:
                 isinstance(dados_jogador[1], str):
             for jogador in self.__jogadores:
                 if jogador.id == dados_jogador[0]:
-                    jogador.nome(dados_jogador[1])
+                    jogador.nome = dados_jogador[1]
                     self.__tela_jogador.feedback('Nome do jogador ' +
-                                                 jogador.id +
+                                                 str(jogador.id) +
                                                  'atualziado: ' +
                                                  jogador.nome)
         else:
             raise CamposInvalidosException
 
     def remove_jogador(self):
-        id = self.__tela_jogador.remove_jogador
+        id = self.__tela_jogador.remove_jogador()
         if isinstance(id, int):
-            self.__jogadores.remove(id)
-            self.__tela_jogador.feedback('Jogador' + id + 'removido')
+            self.__jogadores.pop(id - 1)
+            self.__tela_jogador.feedback('Jogador ' + str(id) + ' removido')
         else:
             CamposInvalidosException
 
@@ -63,3 +64,9 @@ class ControladorJogador:
             if opcao == 0:
                 break
             opcoes[opcao]()
+
+    def pega_jogador_por_id(self, id: int) -> Jogador:
+        for jogador in self.__jogadores:
+            if jogador.id == id:
+                return jogador
+        raise JogadorInvalidoException

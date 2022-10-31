@@ -25,4 +25,10 @@ class Jogada:
         return self.__jogador
 
     def verifica_acerto(self) -> bool:
+        # verifica se self.__posicao no Mapa é 0 ou 1
+        # se 1, muda pra 0 e retorna True
+        pass
+
+    def fim_jogo(self) -> bool:
+        # percorre o Mapa, se ocorrer 1 = False
         pass
