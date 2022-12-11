@@ -37,8 +37,6 @@ class Jogada:
             self.__mapa.tabuleiro_para_jogadores[self.__posicao[0]][self.__posicao[1]] = '*'
             return True
 
-
-#Acertar Lógica
     def fim_jogo(self) -> bool:
         linha = 0
         qtLinhas = len(self.__mapa.tabuleiro)
@@ -50,5 +48,4 @@ class Jogada:
                     return False
                 col += 1
             linha += 1
-
         return True
