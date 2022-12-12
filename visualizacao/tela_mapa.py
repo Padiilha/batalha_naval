@@ -1,4 +1,4 @@
-
+## Excluir
 class TelaMapa:
 
     def mostrar_opcoes(self):
