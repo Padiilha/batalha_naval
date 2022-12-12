@@ -36,6 +36,9 @@ class ControladorPrincipal:
         jogador = self.__controlador_jogador.pega_jogador_por_id(id)
         return jogador
 
+    def atualiza_jogadores(self):
+        self.__controlador_jogador.jogadorDAO().update()
+
     def mostra_mapa(self, matriz):
         self.__controlador_mapa.mostra_matriz(matriz)
 
