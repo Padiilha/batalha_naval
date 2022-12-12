@@ -16,7 +16,7 @@ class Partida:
         self.__jogadas = list()
         self.__acertos = list()
         self.__total_jogadas = 0
-        self.__vencedor = Jogador
+        self.__vencedor = None
 
     @property
     def id(self) -> int:
