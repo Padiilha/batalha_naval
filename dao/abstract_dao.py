@@ -30,7 +30,7 @@ class DAO(ABC):
     def remove(self, key):
         try:
             self.__cache.pop(key)
-            self.__dump
+            self.__dump()
         except KeyError:
             pass
 
@@ -39,3 +39,6 @@ class DAO(ABC):
 
     def update(self):
         self.__dump()
+
+    def tam_cache(self) -> int:
+        return len(self.__cache)

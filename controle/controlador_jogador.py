@@ -11,7 +11,7 @@ class ControladorJogador:
         self.__controlador_principal = controlador_principal
         self.__jogador_DAO = JogadorDAO()
         self.__tela_jogador = TelaJogador()
-        self.__id = 1
+        self.__id = self.__jogador_DAO.tam_cache() + 1
 
     def inclui_jogador(self):
         nome = self.__tela_jogador.incluir_jogador()
@@ -44,6 +44,7 @@ class ControladorJogador:
                                                  str(jogador.id) +
                                                  'atualziado: ' +
                                                  jogador.nome)
+                    self.__jogador_DAO.update()
         else:
             raise CamposInvalidosException
 

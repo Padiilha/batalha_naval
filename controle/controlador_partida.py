@@ -10,7 +10,7 @@ class ControladorPartida:
         self.__controlador_principal = controlador_principal
         self.__partida_DAO = PartidaDAO()
         self.__tela_partida = TelaPartida()
-        self.__id = 1
+        self.__id = self.__partida_DAO.tam_cache() + 1
 
     def inicia_partida(self):
         dados_partida = self.__tela_partida.inicia_partida()
@@ -49,20 +49,23 @@ class ControladorPartida:
                     jogador1.adiciona_vitoria()
                     self.__tela_partida.feedback(jogador1.nome + " ganhou a partida com "
                                                  + str(jogador1.pontos_partida) + " pontos!")
-                    jogador_vez.zera_pontos_partida()
+                    jogador1.zera_pontos_partida()
+                    jogador2.zera_pontos_partida()
                     break
                 elif jogador2.pontos_partida > jogador1.pontos_partida:
                     partida.vencedor = partida.jogadores[1]
                     jogador2.adiciona_vitoria()
                     self.__tela_partida.feedback(jogador2.nome + " ganhou a partida com "
                                                  + str(jogador2.pontos_partida) + " pontos!")
-                    jogador_vez.zera_pontos_partida()
+                    jogador1.zera_pontos_partida()
+                    jogador2.zera_pontos_partida()
                     break
                 else:
                     self.__tela_partida.feedback("Empate! " + str(jogador1.pontos_partida)
                                                  + " x " + str(jogador2.pontos_partida))
                     jogador1.zera_pontos_partida()
                     jogador2.zera_pontos_partida()
+                    partida.vencedor.nome = "Empate"
                     break
                 break
         self.__partida_DAO.add(partida)
