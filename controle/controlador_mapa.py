@@ -14,7 +14,7 @@ class ControladorMapa:
 
     def cria_e_inclui_mapa(self, tamanho_mapa):
         self.__id += 1
-        if tamanho_mapa == "P":
+        if tamanho_mapa == "PEQUENO":
             mapa = Mapa(self.__id, self.cria_mapa(6, 6), self.cria_mapa(6, 6), 6, 6, 4)
 
             id_navios = 1
@@ -29,7 +29,7 @@ class ControladorMapa:
             self.__mapas.append(mapa)
             return mapa
 
-        elif tamanho_mapa == "M":
+        elif tamanho_mapa == "MEDIO":
             mapa = Mapa(self.__id, self.cria_mapa(8, 8), self.cria_mapa(8, 8), 8, 8, 5)
 
             id_navios = 1
@@ -45,7 +45,7 @@ class ControladorMapa:
             return mapa
 
 
-        elif tamanho_mapa == "G":
+        elif tamanho_mapa == "GRANDE":
             mapa = Mapa(self.__id, self.cria_mapa(10, 10), self.cria_mapa(10, 10), 10, 10, 6)
 
             id_navios = 1
@@ -77,7 +77,7 @@ class ControladorMapa:
 
     def posiciona_navios(self, mapa, i, j, tamanho_navio):
         for posicao in range(tamanho_navio):
-            if i >= len(mapa) or i < 0 or j + posicao >= len(mapa[0]) or j + posicao < 0 or not \
+            if j + posicao >= len(mapa[0]) or j + posicao < 0 or not \
             mapa[i][j + posicao] == '~':
                 return False
 

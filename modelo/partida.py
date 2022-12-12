@@ -11,7 +11,7 @@ class Partida:
                  jogador2: Jogador,
                  mapa: Mapa):
         self.__id = id
-        self.__jogadores = (jogador1, jogador2)
+        self.__jogadores = [jogador1, jogador2]
         self.__mapa = mapa
         self.__jogadas = list()
         self.__acertos = list()
@@ -23,7 +23,7 @@ class Partida:
         return self.__id
 
     @property
-    def jogadores(self) -> tuple:
+    def jogadores(self) -> list:
         return self.__jogadores
 
     @property
