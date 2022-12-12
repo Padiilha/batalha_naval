@@ -71,3 +71,6 @@ class ControladorJogador:
             if jogador.id == id:
                 return jogador
         raise JogadorInvalidoException
+
+    def jogadorDAO(self):
+        return self.__jogador_dao
