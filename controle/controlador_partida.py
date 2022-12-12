@@ -1,3 +1,4 @@
+from dao.dao_partida import PartidaDAO
 from modelo.jogada import Jogada
 from modelo.partida import Partida
 from visualizacao.tela_partida import TelaPartida
@@ -7,9 +8,9 @@ class ControladorPartida:
 
     def __init__(self, controlador_principal):
         self.__controlador_principal = controlador_principal
-        self.__partidas = []
+        self.__partida_dao = PartidaDAO()
         self.__tela_partida = TelaPartida()
-        self.__id = 1
+        self.__id = self.__partida_dao.tam_cache() + 1
 
     def inicia_partida(self):
         dados_partida = self.__tela_partida.inicia_partida()
@@ -21,7 +22,6 @@ class ControladorPartida:
                           jogador2,
                           mapa)
         self.__id += 1
-        self.__partidas.append(partida)
         jogador1.adiciona_jogo()
         jogador2.adiciona_jogo()
         num_jogada = 1
@@ -58,10 +58,12 @@ class ControladorPartida:
                     jogador_vez.adiciona_vitoria()
                     self.__tela_partida.lista_vencedor(partida.vencedor)
                 break
+        self.__partida_dao.add(partida)
+        self.__controlador_principal.atualiza_jogadores()
 
     def lista_partida(self):
         dados_partida = []
-        for partida in self.__partidas:
+        for partida in self.__partida_dao.get_all():
             dados_partida.append({'id': partida.id,
                              'jogadores': partida.jogadores,
                              'mapa': partida.mapa.id,
