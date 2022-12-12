@@ -26,10 +26,11 @@ class TelaPartida:
         print("*" * 50)
         print(" " * 20 + "PARTIDA " + str(dados_partida[0]))
         print("*" * 50)
-        print("Jogadores: " + str(dados_partida[1]) + ", " + str(dados_partida[2]))
-        print("Mapa: " + str(dados_partida[3]))
-        print("Quatidade de Jogadas: " + str(dados_partida[4]))
-        print("Quantidade de Acertos: " + str(dados_partida[5]))
+        print("Jogadores: " + str(dados_partida[1]))
+        print("Mapa: " + str(dados_partida[2]))
+        print("Jogadas: " + str(dados_partida[3]))
+        print("Quantidade de Acertos: " + str(dados_partida[4]))
+        print("Quantidade de Jogadas: " + str(dados_partida[5]))
         print("Vencedor: " + str(dados_partida[6]))
 
     def faz_jogada(self, num_jogada, jogador) -> tuple:
@@ -40,6 +41,3 @@ class TelaPartida:
         coluna = int(input("Digite a coluna que deseja acertar: "))
         posicao = (linha, coluna)
         return posicao
-
-    def feedback(self, mensagem: str):
-        print(mensagem)
