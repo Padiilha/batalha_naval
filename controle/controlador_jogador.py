@@ -47,7 +47,7 @@ class ControladorJogador:
         try:
             jogador = self.__tela_jogador.remove_jogador()
             if isinstance(jogador['id'], int):
-                self.__jogador_dao.remove(jogador['id'] - 1)
+                self.__jogador_dao.remove(jogador['id'])
                 self.__tela_jogador.mostra_mensagem('Jogador ' + str(jogador['id']) + ' removido')
         except:
             self.__tela_jogador.mostra_mensagem('ID Inválido! Digite um Valor válido')
